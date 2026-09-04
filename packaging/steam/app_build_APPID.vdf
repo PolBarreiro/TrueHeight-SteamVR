@@ -1,0 +1,12 @@
+"AppBuild"
+{
+	"AppID"        "APPID"            // <-- your Steam AppID
+	"Desc"         "TrueHeight 1.0.0" // build description shown in Steamworks
+	"BuildOutput"  ".\output\"        // logs + chunk cache (do NOT ship this)
+	"ContentRoot"  ".\content\"       // everything under here is uploaded
+
+	"Depots"
+	{
+		"DEPOTID" "depot_build_DEPOTID.vdf"   // <-- usually APPID + 1
+	}
+}

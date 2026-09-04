@@ -1,0 +1,20 @@
+Image credits
+=============
+
+trueheight-logo-v2.png / trueheight-mark.svg / res/trueheight-icon-v2.ico
+  Source: Original geometric artwork created for TrueHeight in this repository.
+  Copyright: (c) 2026 Pol Barreiro Font. All rights reserved.
+  License / required attribution: No third-party artwork; no attribution required.
+
+packaging/steam/store-assets/*.png
+  Source: Reproducible layouts derived from the original TrueHeight mark.
+  Copyright: (c) 2026 Pol Barreiro Font. All rights reserved.
+  License / required attribution: No third-party artwork; no attribution required.
+
+IMPORTANT: if this icon came from Flaticon, Freepik, Icons8 or a similar
+stock-icon site, the free tier almost always requires visible attribution and
+forbids commercial use. That matters twice over here:
+  * Nexus Mods requires that you own or are licensed for everything you upload.
+  * A paid Steam release needs a commercial license for the icon.
+The legacy trueheight-logo.png and res/icon.ico are retained only for source
+history and are not used by release builds or store materials.

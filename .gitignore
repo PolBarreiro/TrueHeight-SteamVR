@@ -1,0 +1,49 @@
+# ---- Build output ----
+build/
+build-*/
+out/
+bin/
+obj/
+cmake-build-*/
+*.o
+*.obj
+*.exp
+*.pdb
+*.ilk
+*.idb
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.vcxproj*
+*.sln
+
+# ---- Distribution artifacts ----
+dist/
+packaging/**/*.zip
+/packaging/steam/content/
+/packaging/steam/output/
+/packaging/steam/checksums.sha256
+/packaging/nexus/
+/.bootstrap-upstream/
+/.research-ovras/
+/TrueHeight.exe
+/openvr_api.dll
+
+# ---- Local user config ----
+# The public template lives at packaging/steam/default-config.ini.
+/config.ini
+
+# ---- Editors / OS ----
+.vs/
+.vscode/
+.idea/
+*.user
+Thumbs.db
+desktop.ini
+Desktop.ini
+*~
+
+# ---- Superseded root assets (now live in res/ and docs/images/) ----
+ICONO VR.ico
+virtual-reality.png

@@ -1,0 +1,48 @@
+TRUEHEIGHT END USER LICENSE AGREEMENT
+Version 1.0 - 3 September 2026
+
+This agreement applies to the commercial Steam edition of TrueHeight
+("Software"), copyright (c) 2026 Pol Barreiro Font ("Licensor").
+
+1. License
+Subject to this agreement and the applicable Steam terms, the Licensor grants
+you a personal, non-exclusive, non-transferable license to install and use the
+Software on devices you control.
+
+2. Ownership
+The Software is licensed, not sold. The Licensor retains all rights not
+expressly granted here. Valve's OpenVR components are separately licensed under
+the BSD 3-Clause license included with the Software.
+
+3. Restrictions
+You may not redistribute, rent, sell, sublicense, or commercially exploit the
+Software, or remove copyright notices. You may not reverse engineer the
+Software except to the extent that applicable law expressly permits it.
+
+4. Safety and compatibility
+The Software changes a temporary SteamVR play-space preview. VR use carries
+inherent risks. Keep the physical play area clear, remain ready to disable the
+height lock, and do not use conflicting play-space offset tools simultaneously.
+
+5. Updates and support
+The Licensor may provide updates but does not promise continued compatibility
+with every headset, runtime, game, operating-system version, or third-party
+tool.
+
+6. Warranty disclaimer
+To the maximum extent permitted by applicable law, the Software is provided
+"as is" without warranties beyond rights that cannot legally be excluded.
+
+7. Limitation of liability
+To the maximum extent permitted by applicable law, the Licensor is not liable
+for indirect, incidental, special, or consequential loss arising from use of
+the Software. Nothing in this agreement limits mandatory consumer rights or
+liability that cannot legally be limited.
+
+8. Termination
+This license ends if you materially breach this agreement. On termination, stop
+using and uninstall the Software.
+
+9. Governing law
+This agreement is governed by the laws of Spain, without overriding any
+mandatory consumer protections that apply where you live.

@@ -1,0 +1,15 @@
+"DepotBuild"
+{
+	"DepotID"      "DEPOTID"
+
+	"FileMapping"
+	{
+		"LocalPath"  "*"     // everything in content\
+		"DepotPath"  "."     // ...goes to the install root
+		"Recursive"  "1"
+	}
+
+	"FileExclusion" "*.pdb"
+	"FileExclusion" "*.log"
+	"FileExclusion" "output\*"
+}

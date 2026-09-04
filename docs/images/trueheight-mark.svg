@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
+  <title id="title">TrueHeight mark</title>
+  <desc id="desc">A VR headset crossed by a vertical height arrow.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M272 310c-92 0-152 70-152 174v68c0 92 53 158 132 158 63 0 91-48 132-82 36-30 220-30 256 0 41 34 69 82 132 82 79 0 132-66 132-158v-68c0-104-60-174-152-174H272Z"
+          fill="#0B1F33" stroke="#22D3EE" stroke-width="48"/>
+    <path d="M248 482h176M600 482h176" stroke="#22D3EE" stroke-width="64"/>
+    <path d="M512 134v756" stroke="#FF6B5E" stroke-width="52"/>
+    <path d="m512 104-76 92h152l-76-92ZM512 920l-76-92h152l-76 92Z" fill="#FF6B5E" stroke="#FF6B5E" stroke-width="12"/>
+  </g>
+</svg>
