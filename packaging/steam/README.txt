@@ -7,6 +7,8 @@ Automatic height stabilization for SteamVR.
 2. Launch TrueHeight from your Steam Library.
 3. Set your standing eye height, then choose Apply & Save.
 4. Press F9 at any time to restore the calibrated floor and pause the lock.
+5. Use the large START/STOP button at the bottom of the window, or press F8,
+   to resume or pause the lock. The lock starts enabled by default.
 
 Personal settings:
   %APPDATA%\TrueHeight\config.ini

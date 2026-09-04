@@ -59,6 +59,9 @@ The hotkeys are global and work while a game has focus.
 | <kbd>F8</kbd> | Pause or resume the height lock |
 | <kbd>F9</kbd> | Restore the calibrated floor and pause the lock |
 
+The large button at the bottom of the settings window performs the same
+start/stop action as <kbd>F8</kbd>. The lock starts enabled by default.
+
 ## Configuration
 
 The settings window covers the common options. The full configuration is saved
@@ -76,10 +79,10 @@ as its template. A Steam update therefore cannot overwrite personal settings.
 
 | Key | Default | Meaning |
 |-----|---------|---------|
-| `target_height_cm` | `170` | Desired headset height above the play-area floor. Set this to your own standing eye height. |
+| `target_height_cm` | `190` | Desired headset height above the play-area floor. Set this to your own standing eye height. |
 | `smoothing_time_ms` | `800` | How gently the offset catches up. Lower values feel tighter. |
-| `deadzone_cm` | `5` | Height error ignored before correction begins. |
-| `max_speed_m_s` | `0.75` | Comfort limit for vertical correction speed. |
+| `deadzone_cm` | `8` | Height error ignored before correction begins. |
+| `max_speed_m_s` | `2.0` | Comfort limit for vertical correction speed. |
 | `update_hz` | `60` | Control-loop rate. |
 | `max_offset_m` | `3.0` | Safety clamp on total temporary offset. |
 | `only_when_worn` | `true` | Pause adjustment when a supported proximity sensor reports that the headset is off. |

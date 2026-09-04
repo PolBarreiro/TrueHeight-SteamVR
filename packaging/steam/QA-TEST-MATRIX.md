@@ -21,7 +21,7 @@ F9 and begin with a clear seated play area.
 | C3 | Replace the install-folder config with different values and relaunch. | Existing AppData values remain unchanged. | |
 | V1 | Start SteamVR with tracking active, then launch TrueHeight. | Status changes to connected; SteamVR was not restarted. | |
 | V2 | While seated, set the target 20 cm above the current reported height. | Offset converges smoothly in the correct direction without runaway movement. | |
-| V3 | Press F8 while locked, wait, then press F8 again. | First press freezes the offset; second resumes correction. | |
+| V3 | Use the large STOP/START button while locked, then repeat with F8. | The button and F8 both freeze/resume correction, and the button label always shows the next action. | |
 | V4 | Press F9 while an offset is active. | Calibrated floor returns, offset reads 0, and lock remains paused. | |
 | V5 | Re-enable the lock, then choose Restore real floor in the window. | Same durable restore and pause behavior as F9. | |
 | V6 | With lock active, remove a headset that has a proximity sensor. | State becomes HEADSET OFF and the offset stops changing. | |

@@ -54,7 +54,7 @@ static const char* kWndClass   = "TrueHeightWnd";
 
 enum {
     IDC_STATUS1 = 1001, IDC_STATUS2,
-    IDC_CHK_ENABLED = 1010, IDC_LBL_HEIGHT, IDC_EDIT_HEIGHT, IDC_TRACK,
+    IDC_BTN_TOGGLE = 1010, IDC_LBL_HEIGHT, IDC_EDIT_HEIGHT, IDC_TRACK,
     IDC_LBL_SMOOTH, IDC_EDIT_SMOOTH,
     IDC_LBL_DEAD,   IDC_EDIT_DEAD,
     IDC_LBL_SPEED,  IDC_EDIT_SPEED,
@@ -68,10 +68,10 @@ enum {
 // ---------------------------------------------------------------------------
 struct Config
 {
-    float target_height_cm  = 170.0f;
+    float target_height_cm  = 190.0f;
     float smoothing_time_ms = 800.0f;
-    float deadzone_cm       = 5.0f;
-    float max_speed_m_s     = 0.75f;
+    float deadzone_cm       = 8.0f;
+    float max_speed_m_s     = 2.0f;
     float update_hz         = 60.0f;
     float max_offset_m      = 3.0f;
     bool  only_when_worn    = true;
@@ -531,6 +531,12 @@ static HWND MakeCtl(HWND parent, const char* cls, const char* text, DWORD style,
                            GetModuleHandleA(nullptr), nullptr);
 }
 
+static void UpdateToggleButton(HWND h)
+{
+    SetWindowTextA(GetDlgItem(h, IDC_BTN_TOGGLE),
+                   g_enabled.load() ? "STOP height lock  (F8)" : "START height lock  (F8)");
+}
+
 static BOOL CALLBACK SetFontProc(HWND hwnd, LPARAM lp)
 {
     SendMessageA(hwnd, WM_SETFONT, (WPARAM)lp, TRUE);
@@ -541,8 +547,6 @@ static void CreateControls(HWND h)
 {
     MakeCtl(h, "STATIC", "SteamVR: waiting...", 0, 12, 12, 356, 18, IDC_STATUS1);
     MakeCtl(h, "STATIC", "", 0, 12, 32, 356, 18, IDC_STATUS2);
-
-    MakeCtl(h, "BUTTON", "Height lock enabled  (F8)", BS_AUTOCHECKBOX, 12, 60, 250, 20, IDC_CHK_ENABLED);
 
     MakeCtl(h, "STATIC", "Target height (cm):", 0, 12, 92, 200, 18, IDC_LBL_HEIGHT);
     MakeCtl(h, "EDIT", "190", WS_BORDER | ES_AUTOHSCROLL, 300, 88, 64, 22, IDC_EDIT_HEIGHT);
@@ -581,6 +585,9 @@ static void CreateControls(HWND h)
             "Closing this window keeps TrueHeight running in the tray.",
             0, 12, 386, 356, 122, IDC_HINT);
 
+    MakeCtl(h, "BUTTON", "STOP height lock  (F8)", BS_PUSHBUTTON | WS_TABSTOP,
+            12, 520, 352, 48, IDC_BTN_TOGGLE);
+
     EnumChildWindows(h, SetFontProc, (LPARAM)GetStockObject(DEFAULT_GUI_FONT));
 }
 
@@ -599,7 +606,7 @@ static void GuiFromConfig(HWND h)
     SendMessageA(GetDlgItem(h, IDC_TRACK), TBM_SETPOS, TRUE, (LPARAM)(LONG)(c.target_height_cm + 0.5f));
     CheckDlgButton(h, IDC_CHK_WORN,    c.only_when_worn  ? BST_CHECKED : BST_UNCHECKED);
     CheckDlgButton(h, IDC_CHK_INVERT,  c.invert          ? BST_CHECKED : BST_UNCHECKED);
-    CheckDlgButton(h, IDC_CHK_ENABLED, g_enabled.load()  ? BST_CHECKED : BST_UNCHECKED);
+    UpdateToggleButton(h);
 }
 
 static float ReadEditFloat(HWND h, int id, float fallback)
@@ -690,10 +697,8 @@ static void UpdateStatus(HWND h)
                       g_offsetCm.load(), kStates[st]);
     SetWindowTextA(GetDlgItem(h, IDC_STATUS2), b);
 
-    // reflect hotkey toggles
-    UINT want = g_enabled.load() ? BST_CHECKED : BST_UNCHECKED;
-    if (IsDlgButtonChecked(h, IDC_CHK_ENABLED) != want)
-        CheckDlgButton(h, IDC_CHK_ENABLED, want);
+    // Reflect F8 and tray toggles in the action button.
+    UpdateToggleButton(h);
 
 }
 
@@ -742,8 +747,9 @@ static LRESULT CALLBACK WndProc(HWND h, UINT msg, WPARAM wp, LPARAM lp)
     case WM_COMMAND:
         switch (LOWORD(wp))
         {
-        case IDC_CHK_ENABLED:
-            g_enabled.store(IsDlgButtonChecked(h, IDC_CHK_ENABLED) == BST_CHECKED);
+        case IDC_BTN_TOGGLE:
+            g_enabled.store(!g_enabled.load());
+            UpdateToggleButton(h);
             return 0;
         case IDC_BTN_APPLY:
             ApplyFromGui(h);
@@ -862,7 +868,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInst, _In_opt_ HINSTANCE hPrevInstance,
     wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE + 1);
     RegisterClassA(&wc);
 
-    RECT r = { 0, 0, 376, 520 };
+    RECT r = { 0, 0, 376, 580 };
     AdjustWindowRect(&r, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, FALSE);
     char title[64];
     std::snprintf(title, sizeof(title), "TrueHeight %s", kAppVersion);
